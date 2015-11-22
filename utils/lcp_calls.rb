@@ -8,14 +8,11 @@
 # ==============================
 
 # Reqs
-
-
 require "rest_client"
 require "json"
 
-require "./lcp_apis"
-require "./lcp_auth"
-
+require "./utils/lcp_apis"
+require "./utils/lcp_auth"
 
 
 def call_lcp(method,url,body)
@@ -66,19 +63,22 @@ end
 
 
 def post_mv(user, lp)
-	puts user
 
 	# Generate URL and Body
 	mv = mv_request(user,lp)
-	puts mv["url"]
-	puts mv["body"]
 
 	return call_lcp("POST", mv["url"], mv["body"])
 end
 
+def get_mv(mv)
+
+
+
 def post_offerset(offerTypes,session,mvuser,lp)
 
+	# Generate URL and Body
 	os = offer_set(offerTypes, session,mvuser,lp)
 
 	return call_lcp("POST", os["url"], os["body"])
 end
+

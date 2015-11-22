@@ -24,6 +24,7 @@ def mv_request(user, lp)
 	url = lp + "/mvs/"
 
 	identifyingFactors = {}
+	authenticatingFactors = {}
 
 	if user["firstName"].to_s != ''
 		identifyingFactors["firstName"] = user["firstName"]
@@ -39,6 +40,10 @@ def mv_request(user, lp)
 
 	if user["memberId"].to_s != ''
 		identifyingFactors["memberId"] =  user["memberId"]
+	end
+
+	if user["password"].to_s != ''
+		authenticatingFactors["password"] =  user["password"]
 	end
 
 	body = {"identifyingFactors" => identifyingFactors}.to_json
