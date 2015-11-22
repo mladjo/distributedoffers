@@ -68,11 +68,11 @@ def offer_set(offerTypes, session, mvuser, lp)
 	if mvuser.nil?
 		user = {"loyaltyProgram" => lp}
 	else
-		user["memberValidation"] = parsed_mv["links"]["self"]["href"]
-		user["firstName"] = parsed_mv["identifyingFactors"]["firstName"]
-		user["lastName"] = parsed_mv["identifyingFactors"]["lastName"]
-		user["email"] = parsed_mv["identifyingFactors"]["email"]
-		user["memberId"] = parsed_mv["identifyingFactors"]["memberId"]		
+		user["memberValidation"] = mvuser["links"]["self"]["href"]
+		user["firstName"] = mvuser["identifyingFactors"]["firstName"]
+		user["lastName"] = mvuser["identifyingFactors"]["lastName"]
+		user["email"] = mvuser["identifyingFactors"]["email"]
+		user["memberId"] = mvuser["identifyingFactors"]["memberId"]		
 	end
 
 	body = {"offerTypes" => offerTypes, "session" => session, "user" => user}.to_json

@@ -98,11 +98,11 @@
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading"><%= @offer %></h2>
-                    <p class="lead"><%= @offer %> <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode=dotargeted">Click here</a> to continue to purchase your offer.</p>
+                    <h2 class="section-heading"><%= @offer["offers"][0]["creative"]["en-US"]["name"] %></h2>
+                    <p class="lead"><%= @offer["offers"][0]["creative"]["en-US"]["description"] %> <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode=dotargeted">Click here</a> to continue to purchase your offer.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="https://iambmac.files.wordpress.com/2012/04/plane_flying.jpg" alt="">
+                    <img class="img-responsive" src="<%= @offer["offers"][0]["creative"]["en-US"]["finePrint"] %>" alt="">
                 </div>
             </div>
 
