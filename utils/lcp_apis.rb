@@ -15,8 +15,8 @@ require "json"
 # =====================
 # MV Request
 #
-# Creates an the MV URL and request body 
-# Requires a user object and lp URI
+# Creates an MV request URL and body 
+# Requires a user object and lp uri
 # ======================
 
 def mv_request(user, lp)
@@ -47,56 +47,24 @@ def mv_request(user, lp)
 	return request
 end
 
-def call_lcp(method,url,body)
 
-    # Logging
-    puts "LOG | Calling to LCP | Prep"
-    puts "LOG | Calling to LCP | url: " + url
-    puts "LOG | Calling to LCP | method: " + method 
-    puts "LOG | Calling to LCP | body: " + body.to_s
+# =====================
+# Offers Request
+#
+# Creates an offer-set request URL and  body 
+# Requires a user object and lp uri
+# ======================
+def offer_set(offerTypes, session, mvuser, lp)
+	url = "https://staging.lcp.points.com/v1/offer-sets/"
 
-    # Prep vars
-    
-    mac_key_identifier = ENV["PLP_MAC_ID"]
-    mac_key = ENV["PLP_MAC_KEY"]
-    
-    method = method.upcase
+	if mvuser.nil?
+		user = {"loyaltyProgram" => lp}
+	else
+		user = mvuser
+	end
 
-    # Ignore content type if the GET 
-    if method != "GET"
-      content_type = "application/json"
-    else
-      content_type = ""
-    end
+	body = {"offerTypes" => offerTypes, "session" => session, "user" => user}.to_json
 
-    # Generate Headers
-    headers = generate_authorization_header_value(method,url,mac_key_identifier,mac_key,content_type,body)
+	request = {"url" => url, "body" => body}	
+end
 
-    # Logging   
-    puts "LOG | Calling to LCP | headers: " + headers
-
-    # Make Request
-    if method == "POST"
-      return RestClient.post(url, 
-                   body, 
-                   :content_type => :json, 
-                   :accept => :json,
-                   :"Authorization" => headers)
-    elsif method == "PATCH"    
-      return RestClient.patch(url, 
-                  body, 
-                  :content_type => :json, 
-                  :accept => :json,
-                  :"Authorization" => headers)
-    elsif method == "GET"    
-      return RestClient.get(url, 
-                  :accept => :json,
-                  :"Authorization" => headers)
-    else
-      return RestClient.get(url, 
-                  body,
-                  :content_type => :json, 
-                  :accept => :json,
-                  :"Authorization" => headers)
-    end
-end 
