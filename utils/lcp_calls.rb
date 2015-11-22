@@ -72,7 +72,7 @@ end
 
 def get_mv(mv)
 
-
+end
 
 def post_offerset(offerTypes,session,mvuser,lp)
 
@@ -81,4 +81,3 @@ def post_offerset(offerTypes,session,mvuser,lp)
 
 	return call_lcp("POST", os["url"], os["body"])
 end
-

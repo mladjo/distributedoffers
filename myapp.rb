@@ -14,7 +14,7 @@ require "rack-ssl-enforcer"
 require "rest_client"
 require "json"
 
-require "./utils/lcp_calls.rb"
+require "./utils/lcp_calls"
 
 # ------------------------------------------------------------------------------------------
 # |||| Default Settings ||||
@@ -29,6 +29,7 @@ configure do
 
     #URL
     set :lp, "https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518"
+    set :offerTypes, "BUY"
 
     # Enable :sessions
     use Rack::Session::Pool
@@ -70,16 +71,31 @@ post '/offer' do
     session[:session] = true
     session[:sessionMember] = params[:mv]
 
-    #Test
-    puts "Attempting MV"
-
     #Create MV
     begin
       session[:sessionMV] = post_mv(session[:sessionMember],settings.lp)
-      puts session[:sessionMV]
+      # puts session[:sessionMV]
     rescue => bang
-      puts "LOG | Error fetching MV: " + bang
+      puts "LOG | Error fetching MV: " + bang.to_s
     end
+
+    #Determine offer type
+    offerSession = {"channel" => "external-site", 
+                    "clientIpAddress" => request.ip, 
+                    "clientUserAgent" => request.user_agent, 
+                    "referralCode" => "dooffer"}
+
+    #Fetch Offer Set
+    begin
+      session[:sessionOffer] = post_offerset(settings.offerTypes,
+                                             offerSession,
+                                             session[:sessionMV],
+                                             settings.lp)
+      puts session[:sessionOffer]
+    rescue => banger
+      puts "LOG | Error fetching Offer Set: " + banger.to_s
+    end
+    
 
     # Route to form
     @mv = session[:sessionMV]
