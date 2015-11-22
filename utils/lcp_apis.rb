@@ -63,6 +63,8 @@ end
 def offer_set(offerTypes, session, mvuser, lp)
 	url = "https://staging.lcp.points.com/v1/offer-sets/"
 
+	user = {}
+
 	if mvuser.nil?
 		user = {"loyaltyProgram" => lp}
 	else
