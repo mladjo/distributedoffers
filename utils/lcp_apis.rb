@@ -46,3 +46,57 @@ def mv_request(user, lp)
 
 	return request
 end
+
+def call_lcp(method,url,body)
+
+    # Logging
+    puts "LOG | Calling to LCP | Prep"
+    puts "LOG | Calling to LCP | url: " + url
+    puts "LOG | Calling to LCP | method: " + method 
+    puts "LOG | Calling to LCP | body: " + body.to_s
+
+    # Prep vars
+    
+    mac_key_identifier = ENV["PLP_MAC_ID"]
+    mac_key = ENV["PLP_MAC_KEY"]
+    
+    method = method.upcase
+
+    # Ignore content type if the GET 
+    if method != "GET"
+      content_type = "application/json"
+    else
+      content_type = ""
+    end
+
+    # Generate Headers
+    headers = generate_authorization_header_value(method,url,mac_key_identifier,mac_key,content_type,body)
+
+    # Logging   
+    puts "LOG | Calling to LCP | headers: " + headers
+
+    # Make Request
+    if method == "POST"
+      return RestClient.post(url, 
+                   body, 
+                   :content_type => :json, 
+                   :accept => :json,
+                   :"Authorization" => headers)
+    elsif method == "PATCH"    
+      return RestClient.patch(url, 
+                  body, 
+                  :content_type => :json, 
+                  :accept => :json,
+                  :"Authorization" => headers)
+    elsif method == "GET"    
+      return RestClient.get(url, 
+                  :accept => :json,
+                  :"Authorization" => headers)
+    else
+      return RestClient.get(url, 
+                  body,
+                  :content_type => :json, 
+                  :accept => :json,
+                  :"Authorization" => headers)
+    end
+end 
