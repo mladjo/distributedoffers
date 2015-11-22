@@ -2,12 +2,13 @@
  * Overrides
  */
 
-form {
-}
-
 label.formlabel {
 	width: 150px;
 	padding-right: 10px;
+	text-align: left;
+	font-size: 16px;
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: none;
 }
 
 button.formbutton {
@@ -19,6 +20,14 @@ button.formbutton {
 
 div#form-fields {
 	text-align: center;
+}
+
+input[type=text] {
+	width: 250px;
+	height: 30px;
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 div#form-buttons {
