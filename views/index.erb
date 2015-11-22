@@ -22,6 +22,10 @@
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- Form Validation -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -98,25 +102,29 @@
 
 
 
-                    <form method="POST" action="offer">
-                        <div id="form-fields">
-                            <label for="mv[firstName]" class="formlabel">First Name:</label>
-                            <input type="text" name="mv[firstName]" placeholder="First Name" /><br />
+                    <form id="mv-form" method="POST" action="offer">
+                        <fieldset>
+                            <div id="form-fields">
+                                <label for="firstName" class="formlabel">First Name:</label>
+                                <input id="firstName" type="text" name="mv[firstName]" placeholder="First Name" minlength="1" required /><br />
 
-                            <label for="mv[lastName]" class="formlabel">First Name:</label>
-                            <input type="text" name="mv[lastName]" placeholder="Last Name" /><br />
+                                <label for="lastName" class="formlabel">First Name:</label>
+                                <input id="lastName" type="text" name="mv[lastName]" placeholder="Last Name" minlength="1" required /><br />
 
-                            <label for="mv[memberId]" class="formlabel">Last Name:</label>
-                            <input type="text" name="mv[memberId]" placeholder="Member ID" /><br />
+                                <label for="memberId" class="formlabel">Last Name:</label>
+                                <input id="memberId" type="text" name="mv[memberId]" placeholder="Member ID" minlength="1" required /><br />
 
-                            <label for="mv[email]" class="formlabel">Email Address:</label>
-                            <input type="text" name="mv[email]" placeholder="Email" /><br />
-                        </div>
-                        <div id="form-buttons">
-                            <button type="submit" class="formbutton" name="submit">Show Me The Money</button>
-                        </div>
+                                <label for="email" class="formlabel">Email Address:</label>
+                                <input id="email" type="text" name="mv[email]" placeholder="Email" type="email" required /><br />
+                            </div>
+                            <div id="form-buttons">
+                                <button type="submit" class="formbutton" name="submit">Show Me The Money</button>
+                            </div>
+                        </fieldset>
                     </form>
-
+                    <script>
+                        $("#mv-form").validate();
+                    </script>
 
 
                 </div>

@@ -38,6 +38,13 @@ end
 # Main Routes
 # ------------------------------------------------------------------------------------------
 
+# Permissions
+
+before '/offer' do
+    validate_session(session[:session],session[:sessionMember])
+end
+
+
 # Log In
 
 get '/login' do
@@ -54,7 +61,12 @@ end
 # Offer
 
 post '/offer' do
-    @form = params[:form]
+    #put member details in session
+    session[:session] = true;
+    session[:sessionMember] = params[:form];
+
+    # Route to form
+    @form = session[:sessionMember]
     erb :offer
 end
 

@@ -25,3 +25,8 @@ div#form-buttons {
 	text-align: center;
 	padding: 20px;
 }
+
+label.error {
+	color: #ff0000;
+	display: block;
+}
