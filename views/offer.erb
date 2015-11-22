@@ -99,7 +99,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading"><%= @offer["offers"][0]["creative"]["en-US"]["name"] %></h2>
-                    <p class="lead"><%= @offer["offers"][0]["creative"]["en-US"]["description"] %> <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode="<%= @referralCode %> >Click here</a> to continue to purchase your offer.</p>
+                    <p class="lead"><%= @offer["offers"][0]["creative"]["en-US"]["description"] %> <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode=<%= @referralCode %>" >Click here</a> to continue to purchase your offer.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="<%= @offer["offers"][0]["creative"]["en-US"]["finePrint"] %>" alt="">
