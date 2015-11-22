@@ -1,5 +1,5 @@
 ﻿# ==============================
-# RbLCP
+# RbLCPAuth
 # Frank Caron
 # Feb 2015
 #
