@@ -15,8 +15,8 @@ require "json"
 # =====================
 # MV Request
 #
-# Creates an the MV URL and request body 
-# Requires a user object and lp URI
+# Creates an MV request URL and body 
+# Requires a user object and lp uri
 # ======================
 
 def mv_request(user, lp)
@@ -46,3 +46,25 @@ def mv_request(user, lp)
 
 	return request
 end
+
+
+# =====================
+# Offers Request
+#
+# Creates an offer-set request URL and  body 
+# Requires a user object and lp uri
+# ======================
+def offer_set(offerTypes, session, mvuser, lp)
+	url = "https://staging.lcp.points.com/v1/offer-sets/"
+
+	if mvuser.nil?
+		user = {"loyaltyProgram" => lp}
+	else
+		user = mvuser
+	end
+
+	body = {"offerTypes" => offerTypes, "session" => session, "user" => user}.to_json
+
+	request = {"url" => url, "body" => body}	
+end
+
