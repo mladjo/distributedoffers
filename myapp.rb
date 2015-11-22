@@ -30,7 +30,7 @@ configure do
     #URL
     set :lp, "https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518"
     set :offerTypes, ["BUY"]
-    set :referralCode, "dooffer"
+    set :referralCode, "dotargetoffer"
 
     # Enable :sessions
     use Rack::Session::Pool
