@@ -35,27 +35,27 @@ def call_lcp(method,url,body)
 
     # Make Request
     if method == "POST"
-      return RestClient.post(url, 
+      return JSON.parse(RestClient.post(url, 
                    body, 
                    :content_type => :json, 
                    :accept => :json,
-                   :"Authorization" => headers)
+                   :"Authorization" => headers))
     elsif method == "PATCH"    
-      return RestClient.patch(url, 
+      return JSON.parse(RestClient.patch(url, 
                   body, 
                   :content_type => :json, 
                   :accept => :json,
-                  :"Authorization" => headers)
+                  :"Authorization" => headers))
     elsif method == "GET"    
-      return RestClient.get(url, 
+      return JSON.parse(RestClient.get(url, 
                   :accept => :json,
-                  :"Authorization" => headers)
+                  :"Authorization" => headers))
     elsif method == "PUT"
-      return RestClient.put(url, 
+      return JSON.parse(RestClient.put(url, 
                   body,
                   :content_type => :json, 
                   :accept => :json,
-                  :"Authorization" => headers)
+                  :"Authorization" => headers))
     else
     	return "Method not supported"
     end
@@ -82,7 +82,7 @@ def post_offerset(offerTypes,session,mvuser,lp)
 	# Generate URL and Body
 	os = offer_set(offerTypes, session,mvuser,lp)
 
-	return call_lcp("POST", os["url"], os["body"])
+	return = call_lcp("POST", os["url"], os["body"])
 
 end
 
@@ -91,4 +91,3 @@ def get_offerset(offerset)
   return call_lcp("GET", offerset["selfurl"], "")
 
 end
-
