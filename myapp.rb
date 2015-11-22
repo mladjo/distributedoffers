@@ -105,6 +105,7 @@ post '/offer' do
     # Route to form
     @mv = session[:sessionMV]
     @offer = session[:sessionOffer]
+    @referralCode = settings.referralCode
     erb :offer
 end
 
