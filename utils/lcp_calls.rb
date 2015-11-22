@@ -83,6 +83,7 @@ def post_offerset(offerTypes,session,mvuser,lp)
 	os = offer_set(offerTypes, session,mvuser,lp)
 
 	return call_lcp("POST", os["url"], os["body"])
+
 end
 
 def get_offerset(offerset)
@@ -90,3 +91,4 @@ def get_offerset(offerset)
   return call_lcp("GET", offerset["selfurl"], "")
 
 end
+
