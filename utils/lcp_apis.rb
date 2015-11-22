@@ -68,7 +68,6 @@ def offer_set(offerTypes, session, mvuser, lp)
 	if mvuser.nil?
 		user = {"loyaltyProgram" => lp}
 	else
-		parsed_mv = JSON.parse(mvuser)
 		user["memberValidation"] = parsed_mv["links"]["self"]["href"]
 		user["firstName"] = parsed_mv["identifyingFactors"]["firstName"]
 		user["lastName"] = parsed_mv["identifyingFactors"]["lastName"]
