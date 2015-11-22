@@ -82,7 +82,7 @@ def post_offerset(offerTypes,session,mvuser,lp)
 	# Generate URL and Body
 	os = offer_set(offerTypes, session,mvuser,lp)
 
-	return = call_lcp("POST", os["url"], os["body"])
+	return call_lcp("POST", os["url"], os["body"])
 
 end
 
