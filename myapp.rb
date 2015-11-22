@@ -1,7 +1,7 @@
 # ==============================
-# PLP
-# Frank Caron
-# Feb 2015
+# Distributed Offers
+# Frank Caron, Mladen Rangelove
+# Nov 2015
 #
 # A simple Storefront and Fulfillment app for connecting to the Points LCP
 # 
