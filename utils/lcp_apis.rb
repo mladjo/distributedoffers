@@ -23,21 +23,22 @@ def mv_request(user, lp)
 
 	url = lp + "/mvs/"
 
+	identifyingFactors = {}
 
 	if user["firstName"].to_s != ''
-		identifyingFactors = {"firstName" => user["firstName"]}
+		identifyingFactors["firstName"] = user["firstName"]
 	end	
 
 	if user["lastName"].to_s != ''
-		identifyingFactors = {"lastName" => user["lastName"]}
+		identifyingFactors["lastName"] = user["lastName"]
 	end	
 
 	if user["email"].to_s != ''
-		identifyingFactors = {"email" => user["email"]}
+		identifyingFactors["email"] =  user["email"]
 	end
 
 	if user["memberId"].to_s != ''
-		identifyingFactors = {"memberId" => user["memberId"]}	
+		identifyingFactors["memberId"] =  user["memberId"]
 	end
 
 	body = {"identifyingFactors" => identifyingFactors}.to_json

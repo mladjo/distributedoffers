@@ -66,9 +66,12 @@ end
 
 
 def post_mv(user, lp)
+	puts user
 
 	# Generate URL and Body
 	mv = mv_request(user,lp)
+	puts mv["url"]
+	puts mv["body"]
 
 	return call_lcp("POST", mv["url"], mv["body"])
 end
@@ -79,10 +82,3 @@ def post_offerset(offerTypes,session,mvuser,lp)
 
 	return call_lcp("POST", os["url"], os["body"])
 end
-
-offerTypes = ["BUY", "GIFT"]
-session = {"channel" => "storefront", "referralCode" =>"referrer", "clientIpAddress" => "1.1.1.1", "clientUserAgent" => "Chrome"}
-lp = "https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518"
-mvuser = nil
-
-puts post_offerset(offerTypes, session,mvuser,lp)
