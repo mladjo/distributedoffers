@@ -14,6 +14,8 @@ require "rack-ssl-enforcer"
 require "rest_client"
 require "json"
 
+require "./utils/lcp_calls.rb"
+
 # ------------------------------------------------------------------------------------------
 # |||| Default Settings ||||
 # ------------------------------------------------------------------------------------------
@@ -24,6 +26,9 @@ configure do
     set :public_folder, Proc.new { File.join(root, "static") }
     set :show_exceptions, true
     set :static_cache_control, [:public, max_age: 0]
+
+    #URL
+    set :lp, "https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518"
 
     # Enable :sessions
     use Rack::Session::Pool
@@ -41,7 +46,7 @@ end
 # Permissions
 
 before '/offer' do
-    validate_session(session[:session],session[:sessionMember])
+    # validate_session(session[:session],session[:sessionMember])
 end
 
 
@@ -62,11 +67,22 @@ end
 
 post '/offer' do
     #put member details in session
-    session[:session] = true;
-    session[:sessionMember] = params[:form];
+    session[:session] = true
+    session[:sessionMember] = params[:mv]
+
+    #Test
+    puts "Attempting MV"
+
+    #Create MV
+    begin
+      session[:sessionMV] = post_mv(session[:sessionMember],settings.lp)
+      puts session[:sessionMV]
+    rescue => bang
+      puts "LOG | Error fetching MV: " + bang
+    end
 
     # Route to form
-    @form = session[:sessionMember]
+    @mv = session[:sessionMV]
     erb :offer
 end
 

@@ -13,8 +13,8 @@
 require "rest_client"
 require "json"
 
-require "./lcp_apis"
-require "./lcp_auth"
+require "./utils/lcp_apis"
+require "./utils/lcp_auth"
 
 
 
