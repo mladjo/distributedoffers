@@ -29,7 +29,7 @@ configure do
 
     #URL
     set :lp, "https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518"
-    set :offerTypes, "BUY"
+    set :offerTypes, ["BUY"]
 
     # Enable :sessions
     use Rack::Session::Pool
@@ -77,6 +77,7 @@ post '/offer' do
       # puts session[:sessionMV]
     rescue => bang
       puts "LOG | Error fetching MV: " + bang.to_s
+      puts "LOG | Error backtrack: " +  bang.backtrace.inspect 
     end
 
     #Determine offer type
@@ -94,11 +95,13 @@ post '/offer' do
       puts session[:sessionOffer]
     rescue => banger
       puts "LOG | Error fetching Offer Set: " + banger.to_s
+      puts "LOG | Error backtrack: " +  banger.backtrace.inspect 
     end
     
 
     # Route to form
     @mv = session[:sessionMV]
+    @offer = session[:sessionOffer]
     erb :offer
 end
 
