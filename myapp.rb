@@ -77,6 +77,7 @@ post '/offer' do
       # puts session[:sessionMV]
     rescue => bang
       puts "LOG | Error fetching MV: " + bang.to_s
+      puts "LOG | Error backtrack: " +  bang.backtrace.inspect 
     end
 
     #Determine offer type
@@ -94,6 +95,7 @@ post '/offer' do
       puts session[:sessionOffer]
     rescue => banger
       puts "LOG | Error fetching Offer Set: " + banger.to_s
+      puts "LOG | Error backtrack: " +  banger.backtrace.inspect 
     end
     
 
