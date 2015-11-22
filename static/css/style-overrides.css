@@ -1,0 +1,27 @@
+/*!
+ * Overrides
+ */
+
+form {
+}
+
+label.formlabel {
+	width: 150px;
+	padding-right: 10px;
+}
+
+button.formbutton {
+	width: 150px;
+	height: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#form-fields {
+	text-align: center;
+}
+
+div#form-buttons {
+	text-align: center;
+	padding: 20px;
+}

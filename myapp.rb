@@ -51,6 +51,12 @@ get '/account/logout' do
     erb :logout
 end
 
+# Offer
+
+post '/offer' do
+    @form = params[:form]
+    erb :offer
+end
 
 # Catch All
 
