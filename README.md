@@ -6,8 +6,9 @@ The following demo application provides a proof-of-concept for the distributed o
 
 ## Contributors
 
-@mladjo
-@frankcaron
+Mladen Rangelov, Product Manager @ Points
+
+Frank Caron, Product Owner @ Points
 
 ## Contributions
 
