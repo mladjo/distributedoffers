@@ -92,7 +92,9 @@ post '/offer' do
                                              offerSession,
                                              session[:sessionMV],
                                              settings.lp)
-      puts session[:sessionOffer]
+      session[:sessionOffer].each do |key, value|
+        puts "#{key}:#{value}"
+      end
     rescue => banger
       puts "LOG | Error fetching Offer Set: " + banger.to_s
       puts "LOG | Error backtrack: " +  banger.backtrace.inspect 
