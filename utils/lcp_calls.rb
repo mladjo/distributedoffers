@@ -70,8 +70,11 @@ def post_mv(user, lp)
 	return call_lcp("POST", mv["url"], mv["body"])
 end
 
-def get_mv(mv)
+def get_mv(mvuser)
 
+  return call_lcp("GET", mvuser["selfurl"], "")
+
+end
 
 
 def post_offerset(offerTypes,session,mvuser,lp)
@@ -82,3 +85,8 @@ def post_offerset(offerTypes,session,mvuser,lp)
 	return call_lcp("POST", os["url"], os["body"])
 end
 
+def get_offerset(offerset)
+
+  return call_lcp("GET", offerset["selfurl"], "")
+
+end
