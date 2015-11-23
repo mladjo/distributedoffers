@@ -116,6 +116,7 @@ get '/error' do
 end
 
 get '/*' do
+    kill_session()
     erb :index
 end
 
@@ -151,6 +152,7 @@ helpers do
     session[:sessionToken] = ""
     session[:sessionMember] = ""
     session[:sessionMV] = ""
+    session[:sessionOffer] = ""
   end  
 
 end
