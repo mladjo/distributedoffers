@@ -99,18 +99,18 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">
-                        <% unless(@offer["offers"][0]["creative"]["en-US"]["name"].nil?) { %>
+                        <% unless(@offer["offers"][0]["creative"]["en-US"]["name"].nil?) %>
                             Oops! No offer found.
-                        <% } else { %>
+                        <% else %>
                             <%=@offer["offers"][0]["creative"]["en-US"]["name"] %>
-                        <% } %>
+                        <% end %>
                     </h2>
                     <p class="lead">
-                        <% unless(@offer["offers"][0]["creative"]["en-US"]["name"].nil?) { %>
+                        <% unless(@offer["offers"][0]["creative"]["en-US"]["name"].nil?) %>
                             Sorry. We've got no offer for you at this time. 
-                        <% } else { %>
+                        <% else %>
                             <%=@offer["offers"][0]["creative"]["en-US"]["name"] %>
-                        <% } %>
+                        <% end %>
                     <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode=<%= @referralCode %>" >Click here</a> to continue to purchase points.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
