@@ -72,13 +72,21 @@ post '/offer' do
     session[:session] = true
     session[:sessionMember] = params[:mv]
 
-    #Create MV
-    begin
-      session[:sessionMV] = post_mv(session[:sessionMember],settings.lp)
-      # puts session[:sessionMV]
-    rescue => bang
-      puts "LOG | Error fetching MV: " + bang.to_s
-      puts "LOG | Error backtrack: " +  bang.backtrace.inspect 
+    puts "LOG | Params: " + params[:mv].to_s
+
+    #Check if there are member details to create an MV with
+    if params[:mv]["memberId"] == "" || params[:mv]["lastName"] == "" || params[:mv]["firstName"] == "" || params[:mv]["email"] == ""
+      puts "LOG | Member is null. Not creating an MV."
+      session[:sessionMV] = nil
+    else 
+      #Create MV
+      begin
+        session[:sessionMV] = post_mv(session[:sessionMember],settings.lp)
+        # puts session[:sessionMV]
+      rescue => bang
+        puts "LOG | Error fetching MV: " + bang.to_s
+        puts "LOG | Error backtrack: " +  bang.backtrace.inspect 
+      end
     end
 
     #Determine offer type

@@ -106,16 +106,18 @@
                         <fieldset>
                             <div id="form-fields">
                                 <label for="firstName" class="formlabel">First Name:</label>
-                                <input id="firstName" type="text" name="mv[firstName]" placeholder="First Name"  /><br />
+                                <input id="firstName" type="text" name="mv[firstName]" placeholder="First Name" value="" /><br />
 
                                 <label for="lastName" class="formlabel">Last Name:</label>
-                                <input id="lastName" type="text" name="mv[lastName]" placeholder="Last Name" /><br />
+                                <input id="lastName" type="text" name="mv[lastName]" placeholder="Last Name" value="" /><br />
 
                                 <label for="memberId" class="formlabel">Member ID:</label>
-                                <input id="memberId" type="text" name="mv[memberId]" placeholder="Member ID"  /><br />
+                                <input id="memberId" type="text" name="mv[memberId]" placeholder="Member ID" value=""  /><br />
 
                                 <label for="email" class="formlabel">Email Address:</label>
-                                <input id="email" type="text" name="mv[email]" placeholder="Email" type="email" /><br />
+                                <input id="email" type="text" name="mv[email]" placeholder="Email" type="email" value="" /><br />
+
+                                <input id="lp" type="hidden" name="mv[loyaltyProgram]" value="https://staging.lcp.points.com/v1/lps/2d39854c-101b-43dd-a0c8-39188e700518" /><br />
                             </div>
                             <div id="form-buttons">
                                 <button type="submit" class="formbutton" name="submit">See My Offer!</button>
@@ -123,7 +125,7 @@
                         </fieldset>
                     </form>
                     <script>
-                        $("#mv-form").validate();
+                        //$("#mv-form").validate();
                     </script>
 
 
