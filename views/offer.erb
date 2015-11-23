@@ -100,16 +100,16 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">
                         <% unless(@offer.nil?) %>
-                            Oops! No offer found.
-                        <% else %>
                             <%=@offer["offers"][0]["creative"]["en-US"]["name"] %>
+                        <% else %>
+                            Oops! No offer found.
                         <% end %>
                     </h2>
                     <p class="lead">
                         <% unless(@offer.nil?) %>
-                            Sorry. We've got no offer for you at this time. 
+                             <%=@offer["offers"][0]["creative"]["en-US"]["name"] %>
                         <% else %>
-                            <%=@offer["offers"][0]["creative"]["en-US"]["name"] %>
+                            Sorry. We've got no offer for you at this time.
                         <% end %>
                     <a href="https://storefront-staging.lxc.points.com/dodemo/en-US/buy?referralCode=<%= @referralCode %>" >Click here</a> to continue to purchase points.</p>
                 </div>
