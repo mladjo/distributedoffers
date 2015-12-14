@@ -20,33 +20,23 @@ require "json"
 # ======================
 
 def mv_request(user, lp)
-
 	url = lp + "/mvs/"
 
-	identifyingFactors = {}
-	authenticatingFactors = {}
+	identifying_factors = {}
+	authenticating_factors = {}
 
-	if user["firstName"].to_s != ''
-		identifyingFactors["firstName"] = user["firstName"]
-	end	
+    authenticating_factors = Hash.new.tap do |h|
+        h['password'] = user['password'] if user['password']
+    end
 
-	if user["lastName"].to_s != ''
-		identifyingFactors["lastName"] = user["lastName"]
-	end	
+    identifying_factors = Hash.new.tap do |h|
+        h["firstName"] = user["firstName"] if user["firstName"]
+        h["lastName"] = user["lastName"] if user["lastName"]
+        h["email"] =  user["email"] if user["email"]
+        h["memberId"] =  user["memberId"] if user["memberId"]
+    end
 
-	if user["email"].to_s != ''
-		identifyingFactors["email"] =  user["email"]
-	end
-
-	if user["memberId"].to_s != ''
-		identifyingFactors["memberId"] =  user["memberId"]
-	end
-
-	if user["password"].to_s != ''
-		authenticatingFactors["password"] =  user["password"]
-	end
-
-	body = {"identifyingFactors" => identifyingFactors}.to_json
+	body = {"identifyingFactors" => identifying_factors}.to_json
 
 	request = {"url" => url, "body" => body}
 
